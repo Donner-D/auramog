@@ -18,7 +18,8 @@
     video {
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
+      object-fit: contain; /* show full video, no cropping */
+      background: black;
     }
 
     #unmute {
@@ -43,7 +44,7 @@
 </head>
 <body>
 
-  <video id="video" autoplay muted playsinline>
+  <video id="video" autoplay muted playsinline loop>
     <source src="video.mp4" type="video/mp4">
   </video>
 
