@@ -11,13 +11,19 @@
       width: 100%;
       height: 100%;
       background: black;
-      overflow: hidden;
       font-family: sans-serif;
     }
 
+    #container {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 80px); /* leave room for banner */
+      background: black;
+    }
+
     video {
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       background: black;
     }
@@ -49,10 +55,85 @@
       left: 0;
       width: 100%;
       height: 80px;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.9);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 16px;
       text-decoration: none;
-      z-ind
+      z-index: 3;
+    }
+
+    #banner img {
+      height: 56px;
+      width: auto;
+      border-radius: 6px;
+    }
+
+    #banner span {
+      color: white;
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      #container {
+        height: calc(100vh - 72px);
+      }
+      #banner {
+        height: 72px;
+      }
+      #banner img {
+        height: 48px;
+      }
+      #banner span {
+        font-size: 12px;
+        letter-spacing: 0.15em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <video
+      id="video"
+      autoplay
+      muted
+      playsinline
+      loop
+      preload="auto"
+    >
+      <source src="video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div id="unmute">TAP FOR SOUND</div>
+  </div>
+
+  <a
+    id="banner"
+    href="https://moghats.etsy.com"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src="moghat.avif" alt="Mog Hat">
+    <span>Click here to get a mog hat</span>
+  </a>
+
+  <script>
+    const video = document.getElementById('video');
+    const overlay = document.getElementById('unmute');
+
+    overlay.addEventListener('click', () => {
+      video.muted = false;
+      video.volume = 1;
+      video.play();
+      overlay.classList.add('hidden');
+    });
+  </script>
+
+</body>
+</html>
