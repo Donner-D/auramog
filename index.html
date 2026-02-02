@@ -18,7 +18,7 @@
     video {
       width: 100vw;
       height: 100vh;
-      object-fit: contain; /* show full video, no cropping */
+      object-fit: contain;
       background: black;
     }
 
@@ -34,33 +34,25 @@
       letter-spacing: 0.15em;
       cursor: pointer;
       transition: opacity 0.4s ease;
+      z-index: 2;
     }
 
     #unmute.hidden {
       opacity: 0;
       pointer-events: none;
     }
-  </style>
-</head>
-<body>
 
-  <video id="video" autoplay muted playsinline loop>
-    <source src="video.mp4" type="video/mp4">
-  </video>
-
-  <div id="unmute">TAP FOR SOUND</div>
-
-  <script>
-    const video = document.getElementById('video');
-    const overlay = document.getElementById('unmute');
-
-    overlay.addEventListener('click', () => {
-      video.muted = false;
-      video.volume = 1;
-      video.play();
-      overlay.classList.add('hidden');
-    });
-  </script>
-
-</body>
-</html>
+    /* Bottom banner */
+    #banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-decoration: none;
+      z-ind
